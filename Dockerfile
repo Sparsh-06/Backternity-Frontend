@@ -38,13 +38,16 @@ WORKDIR /app
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
 
-# Copy built application
-COPY --from=builder /app/public ./public
-COPY --from=builder /app/.next/standalone ./
-COPY --from=builder /app/.next/static ./.next/static
+# Create public directory first
+RUN mkdir -p ./public
 
-# Change ownership to nextjs user
-RUN chown -R nextjs:nodejs /app
+# Copy built application files
+COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
+COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+
+# Copy public directory (if it exists)
+COPY --from=builder --chown=nextjs:nodejs /app/public/ ./public/
+
 USER nextjs
 
 # Expose port (Cloud Run uses PORT environment variable)
