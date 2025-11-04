@@ -21,7 +21,7 @@ export default function ContactUs() {
   };
 
   return (
-    <section className="py-28 relative overflow-hidden bg-gradient-to-b from-background via-background/95 to-background/90">
+    <section className="py-16 sm:py-20 lg:py-28 relative overflow-hidden bg-gradient-to-b from-background via-background/95 to-background/90">
       <div className="max-w-6xl mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-20">

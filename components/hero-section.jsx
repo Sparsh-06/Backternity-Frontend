@@ -110,7 +110,7 @@ const CommandCopy = () => {
       initial={{ opacity: 0, y: 25 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 1, duration: 0.2, ease: "easeOut" }}
-      className="mt-12 flex flex-col items-center gap-6 w-full max-w-2xl mx-auto"
+      className="mt-8 sm:mt-12 flex flex-col items-center gap-4 sm:gap-6 w-full max-w-2xl mx-auto px-4 sm:px-0"
     >
       {/* === Command Box === */}
       <motion.div
@@ -127,20 +127,20 @@ const CommandCopy = () => {
 
         {/* Code & Copy Indicator */}
         <div className="relative flex items-center justify-between px-3 py-2">
-          <div className="flex-1">
+          <div className="flex-1 overflow-hidden">
             <CodeBlock language="bash" code={command} />
           </div>
         </div>
       </motion.div>
 
       {/* === CTA Buttons === */}
-      <div className="flex flex-wrap justify-center items-center gap-4">
+      <div className="flex flex-col sm:flex-row flex-wrap justify-center items-center gap-3 sm:gap-4 w-full">
         <motion.a
           href="/browse/auth-jwt"
           whileHover={{ scale: 1.04 }}
           whileTap={{ scale: 0.97 }}
-          className="px-6 py-2.5 rounded-full bg-emerald-500 text-neutral-950 text-sm font-semibold
-            shadow-[0_0_25px_rgba(0,255,180,0.25)] hover:bg-emerald-400 transition-colors duration-200"
+          className="w-full sm:w-auto px-6 py-2.5 rounded-full bg-emerald-500 text-neutral-950 text-sm font-semibold
+            shadow-[0_0_25px_rgba(0,255,180,0.25)] hover:bg-emerald-400 transition-colors duration-200 text-center"
         >
           Browse Components
         </motion.a>
@@ -149,9 +149,9 @@ const CommandCopy = () => {
           href="/docs"
           whileHover={{ scale: 1.04 }}
           whileTap={{ scale: 0.97 }}
-          className="px-6 py-2.5 rounded-full border border-white/10 text-neutral-300 text-sm font-semibold
+          className="w-full sm:w-auto px-6 py-2.5 rounded-full border border-white/10 text-neutral-300 text-sm font-semibold
             hover:border-emerald-500/30 hover:text-emerald-300 hover:bg-neutral-900/40 
-            transition-all duration-200"
+            transition-all duration-200 text-center"
         >
           Documentation
         </motion.a>
@@ -168,15 +168,15 @@ export default function HeroSection() {
       <DynamicGridBackground />
       <HeroHeader />
 
-      <div className="relative z-10 flex items-center justify-center min-h-screen px-6 py-20">
-        <div className="mx-auto max-w-6xl w-full text-center">
+      <div className="relative z-10 flex items-center justify-center min-h-screen px-4 sm:px-6 lg:px-8 py-20">
+        <div className="mx-auto max-w-7xl w-full text-center">
           {/* Tagline */}
           <motion.div
             initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-emerald-500/20 
-              bg-emerald-500/5 text-emerald-400 text-xs font-medium mb-8"
+            className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-full border border-emerald-500/20 
+              bg-emerald-500/5 text-emerald-400 text-xs sm:text-sm font-medium mb-6 sm:mb-8"
           >
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
@@ -190,7 +190,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            className="text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tight leading-tight"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold tracking-tight leading-[1.1] sm:leading-tight"
           >
             <span className="text-neutral-100 drop-shadow-[0_1px_5px_rgba(255,255,255,0.1)]">
               Modular Backend.
@@ -206,7 +206,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-            className="mt-8 max-w-2xl mx-auto text-lg md:text-xl text-neutral-400 leading-relaxed font-light"
+            className="mt-6 sm:mt-8 max-w-2xl mx-auto text-base sm:text-lg md:text-xl text-neutral-400 leading-relaxed font-light px-4 sm:px-0"
           >
             Build scalable backends with one command. Authentication, data, and
             messaging that integrate in minutes — so you can focus on features,
@@ -221,12 +221,12 @@ export default function HeroSection() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 1.2 }}
-            className="mt-16 flex flex-wrap justify-center gap-6 text-sm text-neutral-500"
+            className="mt-12 sm:mt-16 flex flex-wrap justify-center gap-4 sm:gap-6 text-xs sm:text-sm text-neutral-500 px-4"
           >
             {["Development Ready", "Extendable Ready", "Production Ready"].map((label) => (
               <div key={label} className="flex items-center gap-2">
                 <svg
-                  className="w-5 h-5 text-emerald-500"
+                  className="w-4 h-4 sm:w-5 sm:h-5 text-emerald-500 flex-shrink-0"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                 >
@@ -236,7 +236,7 @@ export default function HeroSection() {
                     clipRule="evenodd"
                   />
                 </svg>
-                <span>{label}</span>
+                <span className="whitespace-nowrap">{label}</span>
               </div>
             ))}
           </motion.div>
@@ -244,14 +244,14 @@ export default function HeroSection() {
       </div>
 
       {/* Scroll indicator */}
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2">
+      <div className="absolute bottom-6 sm:bottom-10 left-1/2 -translate-x-1/2">
         <motion.div
           animate={{ y: [0, 8, 0] }}
           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
           className="text-neutral-600"
         >
           <svg
-            className="w-6 h-6"
+            className="w-5 h-5 sm:w-6 sm:h-6"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"

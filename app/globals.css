@@ -123,3 +123,7 @@ html {
   scrollbar-width: thin;                /* 'auto' or 'thin' */
   scrollbar-color: hsl(var(--primary) / 0.6) hsl(var(--card)); /* thumb / track */
 }
+
+html {
+  font-size: clamp(14px, 0.9vw + 0.8rem, 18px);
+}

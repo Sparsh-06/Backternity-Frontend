@@ -31,21 +31,34 @@ export default function BrowseLayout({ children }) {
         <HeroHeader/>
 
         {/* ===== MAIN LAYOUT ===== */}
-        <div className="mx-auto max-w-[70vw] pt-[100px] flex gap-8">
-          {/* LEFT SIDEBAR */}
-          <aside className="w-64 sticky top-[100px] self-start h-[calc(100vh-100px)] hide-scrollbar overflow-y-auto border-r border-white/5 pr-4">
+        <div className="mx-auto max-w-[95vw] lg:max-w-[85vw] xl:max-w-[80vw] 2xl:max-w-[75vw] pt-[80px] sm:pt-[100px] flex flex-col lg:flex-row gap-4 lg:gap-8 px-4 sm:px-6 lg:px-0">
+          {/* LEFT SIDEBAR - Mobile: Hidden, Desktop: Sticky */}
+          <aside className="hidden lg:block w-64 xl:w-72 sticky top-[100px] self-start h-[calc(100vh-100px)] hide-scrollbar scrollbar-none overflow-y-auto border-r border-white/5 pr-4 xl:pr-6">
             <ComponentSidebar components={components} />
           </aside>
 
-          {/* MAIN CONTENT (scrolls with Lenis) */}
-          <main className="flex-1 min-h-screen">
+          {/* MAIN CONTENT */}
+          <main className="flex-1 min-h-screen max-w-none">
             {children}
           </main>
 
-          {/* RIGHT SIDEBAR (TOC) */}
-          <aside className="w-60 sticky top-[100px] self-start h-[calc(100vh-100px)] hidden lg:block border-l border-white/5 pl-4">
+          {/* RIGHT SIDEBAR (TOC) - Hidden on mobile/tablet, visible on large screens */}
+          <aside className="hidden xl:block w-60 2xl:w-64 sticky top-[100px] self-start h-[calc(100vh-100px)] border-l border-white/5 pl-4 2xl:pl-6">
             <TableOfContents />
           </aside>
+        </div>
+
+        {/* Mobile Navigation Drawer - Only show on mobile when sidebar is hidden */}
+        <div className="lg:hidden fixed bottom-6 left-1/2 transform -translate-x-1/2 z-30">
+          <button
+            className="bg-emerald-500 hover:bg-emerald-400 text-neutral-950 px-4 py-2 rounded-full text-sm font-medium shadow-lg transition-colors"
+            onClick={() => {
+              // You can implement a mobile sidebar toggle here
+              alert('Mobile sidebar would open here');
+            }}
+          >
+            Browse Components
+          </button>
         </div>
       </div>
   );

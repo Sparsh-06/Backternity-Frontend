@@ -53,26 +53,26 @@ export default function Testimonials() {
   return (
     <section
       ref={ref}
-      className="py-28 relative overflow-hidden"
+      className="py-16 sm:py-20 lg:py-28 relative overflow-hidden"
     >
-      <div className="max-w-6xl mx-auto px-6">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-12 sm:mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-semibold text-foreground tracking-tight mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground tracking-tight mb-3 sm:mb-4">
             Developers who trust Backternity
           </h2>
-          <p className="text-base text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+          <p className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed px-4 sm:px-0">
             Real feedback from engineers building scalable systems with modular backend components.
           </p>
         </motion.div>
 
         {/* Testimonials */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8 mb-20">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 mb-16 sm:mb-20">
           {testimonials.map((t, i) => (
             <motion.div
               key={i}
