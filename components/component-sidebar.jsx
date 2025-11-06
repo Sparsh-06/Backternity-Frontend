@@ -23,6 +23,7 @@ export default function ComponentSidebar({ components }) {
     "storage",
     "utility",
     "realtime",
+    "payment",
     "ai",
     "caching",
     "bundles",

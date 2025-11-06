@@ -1,4 +1,5 @@
 "use client";
+import ReactMarkdown from "react-markdown";
 
 import { useState } from "react";
 import { Copy, Check } from "lucide-react";
@@ -72,16 +73,17 @@ export default function ComponentViewer({ component }) {
       </header>
 
       {/* OVERVIEW */}
-      {component.documentation?.overview && (
-        <section id="overview">
-          <h2 className="text-2xl font-semibold mb-4 text-foreground tracking-tight">
-            Overview
-          </h2>
-          <p className="text-[15px] leading-relaxed text-foreground/90 whitespace-pre-line">
-            {component.documentation.overview}
-          </p>
-        </section>
-      )}
+            {component.documentation?.overview && (
+  <section id="overview">
+    <h2 className="text-2xl font-semibold mb-4 text-foreground tracking-tight">
+      Overview
+    </h2>
+
+    <div className="prose prose-invert prose-sm max-w-none text-foreground/90 leading-relaxed">
+      <ReactMarkdown>{component.documentation.overview}</ReactMarkdown>
+    </div>
+  </section>
+)}
 
       {/* PREREQUISITE */}
       {component.documentation?.prerequisite && (
