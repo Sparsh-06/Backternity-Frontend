@@ -131,9 +131,6 @@ export default function SearchCommand() {
                       {comp.description}
                     </span>
                   </div>
-                  <span className="text-xs text-primary/60 font-mono ml-4 shrink-0 self-center">
-                    /browse/{comp.id}
-                  </span>
                 </CommandItem>
               ))}
             </CommandList>

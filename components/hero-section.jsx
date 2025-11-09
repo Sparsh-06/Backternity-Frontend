@@ -31,12 +31,23 @@ const FeatureCard = ({ title, description, icon: Icon, delay }) => (
 // CodeShowcase
 const CodeShowcase = () => {
   const [activeTab, setActiveTab] = useState(0);
+  const [copied, setCopied] = useState(false);
   const examples = [
     { label: "Init", code: "npx backternity@latest init" },
     { label: "Auth", code: "npx backternity@latest add auth-jwt" },
     { label: "Database", code: "npx backternity@latest add mongodb-database" },
     { label: "Realtime", code: "npx backternity@latest add sse-realtime" },
   ];
+
+  const copyToClipboard = async (text) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch (err) {
+      console.error("Failed to copy:", err);
+    }
+  };
 
   return (
     <motion.div
@@ -60,8 +71,29 @@ const CodeShowcase = () => {
           </button>
         ))}
       </div>
-      <div className="font-mono text-xs sm:text-sm text-emerald-400 bg-neutral-950/50 rounded-lg p-3 sm:p-4 select-none break-all">
-        {examples[activeTab].code}
+      <div 
+        className="relative font-mono text-xs sm:text-sm text-emerald-400 bg-neutral-950/50 rounded-lg p-3 sm:p-4 break-all cursor-pointer hover:bg-neutral-950/70 transition-colors group"
+        onClick={() => copyToClipboard(examples[activeTab].code)}
+      >
+        <div className="flex items-center justify-between">
+          <span className="select-none">{examples[activeTab].code}</span>
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              copyToClipboard(examples[activeTab].code);
+            }}
+            className="ml-2 text-neutral-500 hover:text-emerald-400 transition-colors opacity-0 group-hover:opacity-100"
+          >
+            {copied ? <Check size={14} /> : <Copy size={14} />}
+          </button>
+        </div>
+        
+        {/* Copied feedback */}
+        {copied && (
+          <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 text-xs text-emerald-400 font-medium bg-emerald-500/10 border border-emerald-500/20 rounded-md px-2 py-1 animate-fade">
+            Copied!
+          </div>
+        )}
       </div>
     </motion.div>
   );

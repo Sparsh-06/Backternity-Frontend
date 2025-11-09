@@ -234,11 +234,6 @@ export default function ContactUs() {
               </div>
             </div>
 
-            {/* Security/Trust */}
-            <div className="flex items-center gap-3 text-sm text-neutral-500 pl-1 pt-2">
-              <Shield className="w-4 h-4 text-emerald-400" />
-              <span>Secure by design — SSL, encryption, and zero data logging.</span>
-            </div>
           </motion.div>
         </div>
       </div>
