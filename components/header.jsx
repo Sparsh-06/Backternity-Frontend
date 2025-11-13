@@ -31,6 +31,7 @@ import { ChevronsRight } from "lucide-react";
 import { ThumbsUp } from "lucide-react";
 import { MoveRightIcon } from "lucide-react";
 import { MoveRight } from "lucide-react";
+import Image from "next/image";
 
 function RequestAComponent() {
   const [formData, setFormData] = React.useState({
@@ -389,11 +390,9 @@ export const HeroHeader = () => {
                 <Link
                   href="/"
                   aria-label="Backternity Home"
-                  className="flex items-center space-x-2 text-neutral-100 hover:text-emerald-400 transition-colors"
+                  className="flex items-center space-x-2 "
                 >
-                  <h1 className="text-base sm:text-lg font-semibold">
-                    Backternity
-                  </h1>
+                    <Image src="/backternity.png"  alt="Backternity Logo" width={160} height={80} />
                 </Link>
               </div>
 

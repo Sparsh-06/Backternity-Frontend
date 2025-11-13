@@ -4,6 +4,14 @@ import "./globals.css";
 export const metadata = {
   title: "Backternity",
   description: "Build scalable backend via command line",
+  icons: {
+    icon: [
+      { url: '/fav.png' },
+      { url: '/fav.png', sizes: '32x32', type: 'image/png' },
+    ],
+    shortcut: '/fav.png',
+    apple: '/fav.png',
+  },
 };
 
 export default function RootLayout({ children }) {
