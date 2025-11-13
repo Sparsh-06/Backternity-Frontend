@@ -1,100 +1,75 @@
-"use client";
+  import { notFound } from "next/navigation";
+  import ComponentRegistry from "@/lib/registry";
+  import ComponentViewer from "@/components/component-viewer";
 
-import { useParams } from "next/navigation";
-import { useEffect, useState } from "react";
-import ComponentRegistry from "@/lib/registry";
-import ComponentViewer from "@/components/component-viewer";
-import ContactUs from "@/components/sections/contact-us";
+// Generate dynamic metadata for each component page
+export async function generateMetadata({ params }) {
+  const { slug } = await params;
+  const component = ComponentRegistry[slug];    if (!component) {
+      return {
+        title: "Component Not Found - Backternity",
+        description: "The requested component could not be found."
+      };
+    }
 
+    const name = component.name || slug;
+    const type = component.type || "component";
+    const short = component.description || "";
 
-/** 🔸 Skeleton loader mimicking ComponentViewer structure */
-function ComponentSkeleton() {
-  return (
-    <div className="p-8 space-y-10 max-w-3xl animate-pulse">
-      {/* HEADER */}
-      <div className="space-y-4">
-        <div className="h-8 w-2/3 bg-white/10 rounded-md" />
-        <div className="h-4 w-full bg-white/5 rounded-md" />
-        <div className="h-4 w-5/6 bg-white/5 rounded-md" />
-        <div className="flex gap-2 mt-4">
-          {Array.from({ length: 3 }).map((_, i) => (
-            <div key={i} className="h-5 w-16 bg-white/5 rounded-full" />
-          ))}
-        </div>
-      </div>
+    // Controlled, bounded description
+    const desc = short.length > 160 
+      ? short.slice(0, 157) + "…" 
+      : short;
 
-      {/* OVERVIEW SECTION */}
-      <div className="space-y-3">
-        <div className="h-6 w-40 bg-white/10 rounded-md" />
-        <div className="h-4 w-full bg-white/5 rounded-md" />
-        <div className="h-4 w-5/6 bg-white/5 rounded-md" />
-        <div className="h-4 w-3/4 bg-white/5 rounded-md" />
-      </div>
-
-      {/* INSTALLATION / CODEBLOCK SECTION */}
-      <div className="space-y-3">
-        <div className="h-6 w-40 bg-white/10 rounded-md" />
-        <div className="h-28 w-full bg-black/40 border border-white/10 rounded-lg" />
-      </div>
-
-      {/* COMMAND DETAILS TABLE SECTION */}
-      <div className="space-y-3">
-        <div className="h-6 w-52 bg-white/10 rounded-md" />
-        <div className="h-5 w-32 bg-white/5 rounded-md" />
-        <div className="h-32 w-full bg-black/40 border border-white/10 rounded-lg" />
-      </div>
-
-      {/* CONFIGURATION SECTION */}
-      <div className="space-y-3">
-        <div className="h-6 w-36 bg-white/10 rounded-md" />
-        <div className="h-28 w-full bg-black/40 border border-white/10 rounded-lg" />
-      </div>
-
-      {/* FRONTEND USAGE SECTION */}
-      <div className="space-y-3">
-        <div className="h-6 w-56 bg-white/10 rounded-md" />
-        <div className="h-4 w-2/3 bg-white/5 rounded-md" />
-        <div className="h-4 w-3/4 bg-white/5 rounded-md" />
-        <div className="h-4 w-4/5 bg-white/5 rounded-md" />
-        <div className="h-28 w-full bg-black/40 border border-white/10 rounded-lg" />
-      </div>
-    </div>
-  );
-}
-
-/** 🔸 Component Page with Skeleton */
-export default function ComponentSlugPage() {
-  const params = useParams();
-  const slug = params?.slug;
-  const [loading, setLoading] = useState(true);
-  const [component, setComponent] = useState(null);
-
-  useEffect(() => {
-    // Simulate async data loading (helps during transitions)
-    setLoading(true);
-    const timeout = setTimeout(() => {
-      setComponent(ComponentRegistry[slug]);
-      setLoading(false);
-    }, 400); // small delay for UX realism
-
-    return () => clearTimeout(timeout);
-  }, [slug]);
-
-  if (loading) {
-    return <ComponentSkeleton />;
+    return {
+      title: `${name} – ${type[0].toUpperCase() + type.slice(1)} Component | Backternity`,
+      description: desc,
+      keywords: [
+        type,
+        ...(component.tags || []),
+        name.toLowerCase(),
+        slug,
+        "express",
+        "node",
+        "backend"
+      ],
+      openGraph: {
+        title: name,
+        description: desc,
+        type: "article",
+        url: `/browse/${slug}`,
+        images: [
+          {
+            url: `/api/og?component=${encodeURIComponent(name)}&type=${type}`,
+            width: 1200,
+            height: 630,
+            alt: `${name} component preview`
+          }
+        ]
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: name,
+        description: desc,
+        images: [`/api/og?component=${encodeURIComponent(name)}&type=${type}`]
+      },
+      alternates: {
+        canonical: `/browse/${slug}`
+      }
+    };
   }
 
-  if (!component) {
+/** 🔸 Server Component Page */
+export default async function ComponentSlugPage({ params }) {
+  const { slug } = await params;
+  const component = ComponentRegistry[slug];    // Return 404 if component doesn't exist
+    if (!component) {
+      notFound();
+    }
+
     return (
-      <div className="text-neutral-400 text-center mt-10">
-        Component not found.
+      <div className="p-4">
+        <ComponentViewer component={component} componentKey={slug} />
       </div>
     );
   }
-
-  return (
-    <div className="p-4">
-      <ComponentViewer component={component} componentKey={slug} />
-    </div>
-  );
-}
