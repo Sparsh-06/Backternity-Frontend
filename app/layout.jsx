@@ -2,49 +2,67 @@ import NextTopLoader from "nextjs-toploader";
 import "./globals.css";
 
 export const metadata = {
+  metadataBase: new URL("https://backternity.dev"),
   title: {
-    default: "Backternity",
+    default: "Backternity - Build Scalable Backends with One Command",
     template: "%s | Backternity"
   },
   description:
-    "Build scalable backend systems in minutes with modular, production-ready components.",
+    "Build scalable backend systems in minutes with modular, production-ready components. Modular Backend. Minimal Effort. Authentication, data, and messaging that integrate in minutes.",
   icons: {
     icon: [
-      { url: "/fav.png" },
-      { url: "/fav.png", sizes: "32x32", type: "image/png" }
+      { url: "/fav.png", type: "image/png" },
+      { url: "/fav.png", sizes: "32x32", type: "image/png" },
+      { url: "/fav.png", sizes: "16x16", type: "image/png" }
     ],
-    shortcut: "/fav.png",
-    apple: "/fav.png"
+    shortcut: [{ url: "/fav.png", type: "image/png" }],
+    apple: [{ url: "/fav.png", type: "image/png" }],
+    other: [
+      {
+        rel: "icon",
+        url: "/fav.png"
+      }
+    ]
   },
-  metadataBase: new URL("https://backternity.dev"),
   openGraph: {
-    title: "Backternity",
-    description: "Generate production-grade backend infrastructure rapidly.",
+    title: "Backternity - Build Scalable Backends with One Command",
+    description: "Build scalable backend systems in minutes with modular, production-ready components. Authentication, data, and messaging that integrate in minutes.",
     type: "website",
-    url: "/",
+    url: "https://backternity.dev",
     siteName: "Backternity",
+    locale: "en_US",
     images: [
       {
         url: "/opengraph-image.png",
         width: 1200,
-        height: 630
+        height: 630,
+        alt: "Backternity - Modular Backend Platform"
       }
     ]
   },
   twitter: {
     card: "summary_large_image",
-    title: "Backternity",
+    title: "Backternity - Build Scalable Backends with One Command",
     description:
-      "Build backend systems rapidly using modular components.",
-    images: ["/opengraph-image.png"]
+      "Build scalable backend systems in minutes with modular, production-ready components.",
+    images: ["/opengraph-image.png"],
+    creator: "@backternity"
   },
   alternates: {
-    canonical: "/"
+    canonical: "https://backternity.dev"
   },
   robots: {
     index: true,
-    follow: true
-  }
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    }
+  },
+  keywords: ['backend', 'modular backend', 'backend components', 'scalable backend', 'backend infrastructure', 'API development', 'microservices']
 };
 
 export default function RootLayout({ children }) {
