@@ -142,51 +142,51 @@ export default function HeroSection() {
               transition={{ duration: 0.6 }}
               className="inline-flex items-center gap-2 px-4 py-2"
             >
-              {" "}
+              
               <a
                 href="/browse/razorpay-gateway-express-js"
                 className="text-sm font-switzer-light flex items-center gap-1 hover:gap-2 duration-100 transition-all text-neutral-300 hover:text-white"
               >
-                {" "}
-                Razorpay Payment Component{" "}
+                
+                Razorpay Payment Component
                 <span>
-                  {" "}
-                  <MoveRight size={16} />{" "}
-                </span>{" "}
-              </a>{" "}
-            </motion.div>{" "}
-            {/* Headline */}{" "}
+                  
+                  <MoveRight size={16} />
+                </span>
+              </a>
+            </motion.div>
+            {/* Headline */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               className="space-y-6"
             >
-              {" "}
+              
               <h1 className="text-5xl lg:text-7xl font-switzer-bold tracking-tight leading-tight">
-                {" "}
-                <span className="text-neutral-100">Modular Backend.</span>{" "}
-                <br />{" "}
+                
+                <span className="text-neutral-100">Modular Backend.</span>
+                <br />
                 <span className="bg-gradient-to-r from-emerald-400 via-emerald-500 to-teal-400 bg-clip-text text-transparent">
-                  {" "}
-                  Minimal Effort.{" "}
-                </span>{" "}
-              </h1>{" "}
+                  
+                  Minimal Effort.
+                </span>
+              </h1>
               <p className="text-lg lg:text-xl text-neutral-400 max-w-xl leading-relaxed font-switzer-light">
-                {" "}
+                
                 Build scalable backends with one command. Authentication, data,
-                and messaging that integrate in minutes.{" "}
-              </p>{" "}
-            </motion.div>{" "}
-            {/* CTA */}{" "}
+                and messaging that integrate in minutes.
+              </p>
+            </motion.div>
+            {/* CTA */}
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
               className="space-y-4"
             >
-              {" "}
-              {/* Full-width command strip */}{" "}
+              
+              {/* Full-width command strip */}
               <motion.div
                 initial={{ opacity: 0, x: -50 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -194,88 +194,77 @@ export default function HeroSection() {
                 className="relative w-full sm:w-[55vw] -mx-4 sm:-mx-6 lg:-mx-[60vw] mb-8 sm:mb-12 lg:left-[80%] lg:right-[50%]"
                 onClick={() => copyToClipboard("npx backternity@latest init")}
               >
-                {" "}
+                
                 <div className="relative backdrop-blur-[1px] border-[1px] overflow-hidden rounded-full border-emerald-500/60 shadow-[0_0_15px_rgba(16,185,129,0.15)] group cursor-pointer hover:border-emerald-500/40 hover:shadow-[0_0_25px_rgba(16,185,129,0.25)] transition-all duration-500">
-                  {" "}
-                  {/* Animated light beam effect */}{" "}
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-emerald-500/10 to-emerald-400/30 animate-pulse"></div>{" "}
-                  {/* Content container */}{" "}
+                  
+                  {/* Animated light beam effect */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-emerald-500/10 to-emerald-400/30 animate-pulse"></div>
+                  {/* Content container */}
                   <div className="container mx-auto px-4 sm:px-6 py-3 sm:py-4 flex justify-start sm:justify-center">
-                    {" "}
+                    
                     <div className="flex items-center gap-2 sm:gap-3 relative z-10 sm:ml-[380px] -ml-0">
-                      {" "}
+                      
                       <span className="text-neutral-500 text-xs sm:text-sm">
-                        {" "}
-                        ▲{" "}
-                      </span>{" "}
+                        
+                        ▲
+                      </span>
                       <code className="font-mono text-xs sm:text-sm text-neutral-300 group-hover:text-emerald-300 transition-colors break-all">
-                        {" "}
-                        npx backternity@latest init{" "}
-                      </code>{" "}
+                        
+                        npx backternity@latest init
+                      </code>
                       <button
                         onClick={() =>
                           copyToClipboard("npx backternity@latest init")
                         }
                         className="ml-1 sm:ml-2 text-neutral-500 hover:text-emerald-400 transition-colors"
                       >
-                        {" "}
-                        {copied ? <Check size={14} /> : <Copy size={14} />}{" "}
-                      </button>{" "}
-                    </div>{" "}
-                  </div>{" "}
-                </div>{" "}
-              </motion.div>{" "}
+                        
+                        {copied ? <Check size={14} /> : <Copy size={14} />}
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
               <div className="flex flex-wrap gap-3">
-                {" "}
                 <motion.a
                   href="/browse/auth-jwt"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   className="px-6 py-3 rounded-full bg-emerald-500 text-neutral-950 font-switzer-semibold shadow-lg shadow-emerald-500/25 hover:bg-emerald-400 transition-colors"
                 >
-                  {" "}
-                  Browse Components{" "}
-                </motion.a>{" "}
-                <motion.a
-                  href="/docs"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="px-6 py-3 rounded-full border border-neutral-700 text-neutral-300 font-switzer-medium hover:border-emerald-500/50 hover:text-emerald-300 transition-all"
-                >
-                  {" "}
-                  Documentation{" "}
-                </motion.a>{" "}
-              </div>{" "}
-            </motion.div>{" "}
-            {/* Trust indicators */}{" "}
+                  Browse Components
+                </motion.a>
+              </div>
+            </motion.div>
+            {/* Trust indicators */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.8 }}
               className="flex flex-wrap gap-6 text-sm text-neutral-500 font-switzer-light"
             >
-              {" "}
+              
               {["Development Ready", "Extendable", "Developer Friendly"].map(
                 (item) => (
                   <div key={item} className="flex items-center gap-2">
-                    {" "}
+                    
                     <svg
                       className="w-5 h-5 text-emerald-500"
                       fill="currentColor"
                       viewBox="0 0 20 20"
                     >
-                      {" "}
+                      
                       <path
                         fillRule="evenodd"
                         d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
                         clipRule="evenodd"
-                      />{" "}
-                    </svg>{" "}
-                    <span>{item}</span>{" "}
+                      />
+                    </svg>
+                    <span>{item}</span>
                   </div>
                 )
-              )}{" "}
-            </motion.div>{" "}
+              )}
+            </motion.div>
           </div>
           {/* RIGHT */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mt-10 lg:mt-0">
