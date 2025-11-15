@@ -1,31 +1,34 @@
-import ComponentRegistry from '@/lib/registry'
+import ComponentRegistry from '@/lib/registry';
 
 export default function sitemap() {
-  const baseUrl = 'https://backternity.dev'
-  
-  // Get all component URLs
+  const baseUrl = 'https://backternity.dev';
+  const nowIso = new Date().toISOString();
+
+  // Generate URLs for all components in the registry
   const componentUrls = Object.keys(ComponentRegistry).map((slug) => ({
     url: `${baseUrl}/browse/${slug}`,
-    lastModified: new Date(),
-    changeFrequency: 'weekly',
+    lastModified: nowIso, // Use ISO 8601 format for date consistency
+    changefreq: 'weekly',  // Use 'changefreq' (all lowercase) per sitemap protocol
     priority: 0.8,
-  }))
+  }));
 
-  // Static routes
+  // Define static and important site-wide URLs
   const staticRoutes = [
     {
       url: baseUrl,
-      lastModified: new Date(),
-      changeFrequency: 'daily',
-      priority: 1,
+      lastModified: nowIso,
+      changefreq: 'daily',
+      priority: 1.0,
     },
     {
       url: `${baseUrl}/browse`,
-      lastModified: new Date(),
-      changeFrequency: 'daily',
+      lastModified: nowIso,
+      changefreq: 'daily',
       priority: 0.9,
-    }
-  ]
+    },
+    // Optionally add more static important pages:
+  ];
 
-  return [...staticRoutes, ...componentUrls]
+  // Merge static and dynamic URLs
+  return [...staticRoutes, ...componentUrls];
 }
