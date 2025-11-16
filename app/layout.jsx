@@ -1,6 +1,7 @@
 import NextTopLoader from "nextjs-toploader";
 import "./globals.css";
 import { GoogleAnalytics } from '@next/third-parties/google';
+import Footer from "@/components/sections/Footer";
 
 // Enhanced Metadata for SEO
 export const metadata = {
@@ -125,6 +126,7 @@ export default function RootLayout({ children }) {
         <NextTopLoader color="#50C878" showAtBottom />
         <main id="main-content" tabIndex={-1}>
           {children}
+          <Footer/>
         </main>
       </body>
       <GoogleAnalytics gaId="G-1YLP9NEWXL" />
