@@ -126,8 +126,8 @@ export default function RootLayout({ children }) {
         <NextTopLoader color="#50C878" showAtBottom />
         <main id="main-content" tabIndex={-1}>
           {children}
-          <Footer/>
         </main>
+          <Footer/>
       </body>
       <GoogleAnalytics gaId="G-1YLP9NEWXL" />
     </html>

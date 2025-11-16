@@ -64,7 +64,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/browse/mongodb-database" className="hover:text-emerald-400 transition-colors">
+                <Link href="/browse/database-mongodb" className="hover:text-emerald-400 transition-colors">
                   MongoDB Integration
                 </Link>
               </li>
